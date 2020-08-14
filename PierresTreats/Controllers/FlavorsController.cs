@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RecipeBox.Models;
+using PierresTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +27,8 @@ namespace PierresTreats.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      var UserFlavor = _db.Flavors.Where(entry=>entry.User.Id == currentUser.Id);
-      return View(userRecipe);
+      var userFlavor = _db.Flavors.Where(entry=>entry.User.Id == currentUser.Id);
+      return View(userFlavor);
     }
 
     public ActionResult Create()
@@ -41,9 +41,9 @@ namespace PierresTreats.Controllers
     public async Task<ActionResult> Create(Flavor flavor, int TreatId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var curentUser = await _userManager.FindByIdAsync(userId);
+      var currentUser = await _userManager.FindByIdAsync(userId);
       flavor.User = currentUser;
-      _db.Flavors.Add(recipe);
+      _db.Flavors.Add(flavor);
       if (TreatId != 0)
       {
         _db.TreatFlavor.Add(new TreatFlavor() {TreatId = TreatId, FlavorId = flavor.FlavorId});
@@ -92,7 +92,7 @@ namespace PierresTreats.Controllers
     {
       if (TreatId != 0)
       {
-        _db.TreatRecipe.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+        _db.TreatFlavor.Add(new TreatFlavor() { TreatId = TreatId, FlavorId = flavor.FlavorId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RecipeBox.Models;
+using PierresTreats.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +14,10 @@ namespace PierresTreats.Controllers
   [Authorize]
   public class TreatsController : Controller
   {
-    private readonly RecipeBoxContext _db;
+    private readonly PierresTreatsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
     {
       _userManager = userManager;
       _db = db;
