@@ -5,18 +5,20 @@
 @using PierresTreats.Models;
 @model List<PierresTreats.Models.Treat>;
 
-<h1>Treats</h1>
+<h1 class ="jumbotron">Treats</h1>
 
-@if (@Model.Count == 0)
-{
-  <h3>No Treats have been added yet!</h3>
-} 
+<div class="container-fluid">
+  @if (@Model.Count == 0)
+  {
+    <h3>No Treats have been added yet!</h3>
+  } 
 
-@foreach (Treat treat in Model)
-{
-  @Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })<br>
-}
+  @foreach (Treat treat in Model)
+  {
+    @Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })<br>
+  }
 
 
-@Html.ActionLink("Add new treat", "Create")<br>
-@Html.ActionLink("Home", "Index", "Home")<br>
+  @Html.ActionLink("Add new treat", "Create")<br>
+  @Html.ActionLink("Home", "Index", "Home")<br>
+</div>

@@ -4,24 +4,26 @@
 
 @model PierresTreats.Models.Flavor;
 
-<h2>Flavor Details</h2>
+<h2 class="jumbotron">Flavor Details</h2>
 <hr />
-<h2>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
+<div class="container-fluid">
+  <h2>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
 
-@if(@Model.Treats.Count == 0)
-{
-  <p>No Treats have this flavor available</p>
-}
-else
-{
-  <h3>Treats with this flavor:</h3>
-  @foreach(var join in Model.Treats)
+  @if(@Model.Treats.Count == 0)
   {
-    <p><h4>@join.Treat.Name</h4></p>
+    <p>No Treats have this flavor available</p>
   }
-}
+  else
+  {
+    <h3>Treats with this flavor:</h3>
+    @foreach(var join in Model.Treats)
+    {
+      <p><h4>@join.Treat.Name</h4></p>
+    }
+  }
 
-<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Back to Flavors", "Index")</p>
+  <p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Back to Flavors", "Index")</p>
+</div>

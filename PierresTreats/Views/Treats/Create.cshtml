@@ -4,11 +4,13 @@
 
 @model PierresTreats.Models.Treat
 
-<h4>Add a new Treat</h4>
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)
-    <input type="submit" value="Add new Treat" />
-}
-<p>@Html.ActionLink("Show all treats", "Index")</p>
+<h1 class="jumbotron">Add a new Treat</h1>
+  <div class="container-fluid">
+  @using (Html.BeginForm())
+  {
+      @Html.LabelFor(model => model.Name)
+      @Html.TextBoxFor(model => model.Name)
+      <input type="submit" value="Add new Treat" />
+  }
+  <p>@Html.ActionLink("Show all treats", "Index")</p>
+</div>

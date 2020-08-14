@@ -5,18 +5,20 @@
 @using PierresTreats.Models;
 @model List<PierresTreats.Models.Flavor>;
 
-<h1>Flavors</h1>
+<h1 class="jumbotron">Flavors</h1>
 
-@if (!@Model.Any())
-{
-  <h3>No Flavors have been added yet!</h3>
-} 
+<div class="container-fluid">
+  @if (!@Model.Any())
+  {
+    <h3>No Flavors have been added yet!</h3>
+  } 
 
-@foreach (Flavor flavor in Model)
-{
-  @Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })<br>
-}
+  @foreach (Flavor flavor in Model)
+  {
+    @Html.ActionLink($"{flavor.Name}", "Details", new { id = flavor.FlavorId })<br>
+  }
 
 
-@Html.ActionLink("Add new Flavor", "Create")<br>
-@Html.ActionLink("Home", "Index", "Home")<br>
+  @Html.ActionLink("Add new Flavor", "Create")<br>
+  @Html.ActionLink("Home", "Index", "Home")<br>
+</div>
